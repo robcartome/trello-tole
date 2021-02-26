@@ -1,8 +1,7 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import './App.css';
-import { useState } from "react";
 
 function App() {
   const [route, setRoute] = useState("home");

@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 16px 0 16px;
+}
+
+.header__main {
+  display:flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.isVisible{
+  display: none;
+}
+
+.header__user {
+  background-color: var(--color-white);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.header__user span{
+  color: var(--color-dark-purple);
+  font-family: 'Roboto Mono';
+}
+
+.logo {
+  display: flex;
+  gap: 3.3px;
+  align-items: flex-end;
+}
+
+.logo__rectangle-large{
+  background-color: var(--color-white);
+  height: 29.7px;
+  width: 6.6px;
+  border-radius: 5px;
+}
+
+.logo__rectangle-short{
+  background-color: var(--color-white);
+  height: 24.75px;
+  width: 6.6px;
+  border-radius: 5px;
+}

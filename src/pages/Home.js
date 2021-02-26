@@ -1,4 +1,5 @@
 import "./Home.css";
+import Button from "../components/UI/buttons/Button";
 
 function Home({ goto }) {
   return (
@@ -10,6 +11,7 @@ function Home({ goto }) {
           <br />
           Trello Innova
         </h1>
+        <Button title="Start Here" onPress={ () => goto("main") } />
         
       </div>
     </main>
