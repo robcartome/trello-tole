@@ -1,0 +1,44 @@
+.boards {
+  margin: 30px 16px;
+}
+
+.boards__title {
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 13px;
+}
+
+.boards__main {
+  display: flex;
+  gap: 10px;  
+}
+
+/* Board */
+.board{
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  border-radius: 5px;
+  max-width: 155px;
+  /* height: 152px; */
+}
+
+.board__body {
+  font-size: 30px;
+  color: var(--color-light-gray);
+  text-align: left;
+  font-weight: bold;
+  padding: 4px 10px;
+  width: 128px;
+  height: 70px;
+}
+
+.board__footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+}

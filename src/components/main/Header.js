@@ -1,5 +1,4 @@
 import "./Header.css";
-import home from "../../assets/images/home.svg";
 /* import AlertLineIcon from 'remixicon-react/AlertLineIcon'; */
 import Home6LineIcon from 'remixicon-react/Home6LineIcon';
 function Header() {
@@ -12,7 +11,7 @@ function Header() {
           <div className ="logo__rectangle-short"></div>
         </div>
       </div>
-      <div className="header__user" alt="user"><span>YL</span></div>
+      <div className="user-photo" alt="user"><span>YL</span></div>
     </header>
   );
 }
