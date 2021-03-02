@@ -1,0 +1,24 @@
+.list{
+  background: var(--background-lists);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.list__header {
+  color: var(--color-grey);
+  font-size: 14px;
+  text-align: left
+}
+
+.list__body {
+  
+}
+
+.list__footer {
+  color: var(--color-grey-2);
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  padding-top: 10px;
+  cursor: pointer;
+}

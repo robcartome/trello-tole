@@ -1,8 +1,7 @@
-import user1 from "../../assets/images/userw.png";
 import "./BoardContainer.css";
 import Board from "../board/Board";
 
-function BoardContainer({currentUser, dataBoards , setGo, setBoardId}){
+function BoardContainer({currentUser, dataBoards , setGo, setBoardId, setBoardName }){
  /*  console.log("entroa board", dataBoards) */
 
   return (
@@ -13,7 +12,7 @@ function BoardContainer({currentUser, dataBoards , setGo, setBoardId}){
       {
         dataBoards.map((board)=> (
            currentUser === board.userId ? 
-            <Board key={board.boardId} name = {board.name}  setGo={setGo} setBoardId={()=>setBoardId(board.boardId)}/>
+            <Board key={board.boardId} name = {board.name}  setGo={setGo} setBoardId={()=>setBoardId(board.boardId)} setBoardName ={()=>setBoardName(board.name)}/>
            : ""  
         ))
       }
@@ -23,7 +22,7 @@ function BoardContainer({currentUser, dataBoards , setGo, setBoardId}){
       {
         dataBoards.map((board)=> (
            currentUser !== board.userId ? 
-           <Board key={board.boardId} name = {board.name}  setGo={setGo} setBoardId={()=>setBoardId(board.boardId)}/>
+           <Board key={board.boardId} name = {board.name}  setGo={setGo} setBoardId={()=>setBoardId(board.boardId)} setBoardName ={()=>setBoardName(board.name)}/>
            : ""  
         ))
       }

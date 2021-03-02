@@ -3,11 +3,13 @@
 :root{
   --background-body: var(--color-dark-purple);
   --background-body-figure:rgba(255, 255, 255, 0.7);
+  --background-lists: var(--color-white);
   --font-color-white: #FFFFFF;
   --color-white: #FFFFFF;
   --color-black: #292929;
   --color-light-gray: #DBDBDB;
   --color-grey: #AAACAF;
+  --color-grey-2: #B1B1B1;
   --color-light-pink: #F9548C;
   --color-pink: #F34290;
   --color-green: #29A940;
@@ -15,6 +17,7 @@
   --color-dark-purple:#4D2DD9;
   --color-purple: #AA96F2;
   --color-orange: #FB9610;
+  --button-background-green : #46FAD5;
 }
 
 * {

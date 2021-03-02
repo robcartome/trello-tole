@@ -66,6 +66,30 @@ function Main({ goto }) {
     },
     {
       "listId": 2,
+      "boardId": 1,
+      "name": "In Progess",
+      "cards": [
+        {
+          "cardId": 4,
+          "listId":2,
+          "name": "Add Social",
+          "comments":[
+            {
+              "commentId": 5,
+              "userId": 1,
+              "description": "Where Comment"
+            },
+            {
+              "commentId": 6,
+              "userId": 2,
+              "description": "Where Comment"
+            }
+          ]
+        }
+      ],
+    },
+    {
+      "listId": 2,
       "boardId": 2,
       "name": "Todo",
       "cards": [
@@ -89,15 +113,22 @@ function Main({ goto }) {
   /* console.log("entro a main", dataBoard[0].boards); */
   const [go, setGo] = useState("mainBoards");
   const [currentIdBoard,setBoardId] = useState("");
+  const [currentNameBoard,setBoardName] = useState("");
   let currentSection = null;
   let isDisplayNoneClass = "";
   switch (go) {
     case "mainBoards":
       isDisplayNoneClass = "notVisible";
-      currentSection = <BoardContainer currentUser={1} dataBoards={dataBoard[0].boards} setGo = {setGo} setBoardId = {setBoardId}/>;
+      currentSection = <BoardContainer 
+      currentUser={1} 
+      dataBoards={dataBoard[0].boards} 
+      setGo = {setGo} 
+      setBoardId = {setBoardId}
+      setBoardName = {setBoardName} />;
       break;
     case "board":
-      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} boardId={currentIdBoard}/>;
+      const listData = listsData.filter(list => list.boardId == currentIdBoard );
+      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} listData = {listData} nameBoard = {currentNameBoard}/>;
       break;
   }
 

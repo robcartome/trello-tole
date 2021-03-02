@@ -1,0 +1,48 @@
+.lists-container {
+  padding:16px;
+}
+
+.lists-container h3{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.lists-container__head {
+ /*  background:red; */
+  display: flex;
+  gap: 3px;
+}
+
+.lists-container__head .user-photo {
+  background:var(--color-turquoise);
+  width:30px;
+  height:30px;
+  cursor: pointer;
+}
+
+.lists-container__main {
+  display: flex;
+  margin-top: 20px;
+  border: 1px solid red;
+  gap:6px;
+}
+
+.lists-container__main li{
+  list-style-type: none;
+}
+
+.button-add {
+  background-color: var(--button-background-green);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  max-height: 100px;
+  cursor: pointer;
+}
+
+
+
+
+
