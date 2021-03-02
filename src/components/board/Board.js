@@ -2,8 +2,6 @@ import user1 from "../../assets/images/userw.png";
 import "./Board.css";
 
 function Board({ currentUser, name, setGo, setBoardId, setBoardName }){
-  /* const goList = ()=>{goto} */
-
   return (
     <div className="board">
       <div className="board__body" onClick={()=>{

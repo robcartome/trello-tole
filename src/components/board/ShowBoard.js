@@ -1,6 +1,6 @@
 import AddLine from 'remixicon-react/AddLineIcon';
 import user1 from "../../assets/images/userw.png";
-import List from '../list/list';
+import List from '../list/List';
 import "./ShowBoard.css";
 
 function ShowBoard({setGo, listData, nameBoard}){

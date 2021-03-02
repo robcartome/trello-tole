@@ -13,4 +13,5 @@
 .boards__main {
   display: flex;
   gap: 10px;  
+  overflow: auto;
 }

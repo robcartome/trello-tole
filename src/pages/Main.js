@@ -67,12 +67,12 @@ function Main({ goto }) {
     {
       "listId": 2,
       "boardId": 1,
-      "name": "In Progess",
+      "name": "In Progress",
       "cards": [
         {
           "cardId": 4,
           "listId":2,
-          "name": "Add Social",
+          "name": "Add Social Progress",
           "comments":[
             {
               "commentId": 5,
@@ -84,6 +84,54 @@ function Main({ goto }) {
               "userId": 2,
               "description": "Where Comment"
             }
+          ]
+        },
+        {
+          "cardId": 5,
+          "listId": 2,
+          "name": "Add Social Progress 2",
+          "comments":[
+            {
+              "commentId": 7,
+              "userId": 1,
+              "description": "My Comment "
+            },
+          ]
+        }
+      ],
+    },
+    {
+      "listId": 3,
+      "boardId": 1,
+      "name": "In Progress",
+      "cards": [
+        {
+          "cardId": 6,
+          "listId":3,
+          "name": "Add Social Progress",
+          "comments":[
+            {
+              "commentId": 5,
+              "userId": 1,
+              "description": "Where Comment"
+            },
+            {
+              "commentId": 6,
+              "userId": 2,
+              "description": "Where Comment"
+            }
+          ]
+        },
+        {
+          "cardId": 7,
+          "listId": 3,
+          "name": "Add Social Progress 2",
+          "comments":[
+            {
+              "commentId": 7,
+              "userId": 1,
+              "description": "My Comment "
+            },
           ]
         }
       ],
@@ -127,7 +175,7 @@ function Main({ goto }) {
       setBoardName = {setBoardName} />;
       break;
     case "board":
-      const listData = listsData.filter(list => list.boardId == currentIdBoard );
+      const listData = listsData.filter(list => list.boardId === currentIdBoard );
       currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} listData = {listData} nameBoard = {currentNameBoard}/>;
       break;
   }

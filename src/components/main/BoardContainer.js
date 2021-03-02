@@ -2,11 +2,8 @@ import "./BoardContainer.css";
 import Board from "../board/Board";
 
 function BoardContainer({currentUser, dataBoards , setGo, setBoardId, setBoardName }){
- /*  console.log("entroa board", dataBoards) */
-
   return (
     <section className="boards">
-      {/* <a onClick={()=>{goto("home")}}>aaa</a> */}
       <h3 className="boards__title">My Boards</h3>
       <div className="boards__main">
       {
