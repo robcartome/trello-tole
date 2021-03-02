@@ -1,8 +1,9 @@
 import Header from "../components/main/Header";
-import Board from "../components/main/Boards";
+import BoardContainer from "../components/main/BoardContainer";
 import { useEffect, useState } from "react";
+import ShowBoard from "../components/board/ShowBoard";
 
-function Main({ setRoute }) {
+function Main({ goto }) {
   const initialState = {
     "users": [
       {
@@ -85,12 +86,25 @@ function Main({ setRoute }) {
   ]
 
   const [dataBoard, setDataBoard] = useState([initialState]);
-  console.log("entro a main", dataBoard[0].boards);
+  /* console.log("entro a main", dataBoard[0].boards); */
+  const [go, setGo] = useState("mainBoards");
+  const [currentIdBoard,setBoardId] = useState("");
+  let currentSection = null;
+  let isDisplayNoneClass = "";
+  switch (go) {
+    case "mainBoards":
+      isDisplayNoneClass = "notVisible";
+      currentSection = <BoardContainer currentUser={1} dataBoards={dataBoard[0].boards} setGo = {setGo} setBoardId = {setBoardId}/>;
+      break;
+    case "board":
+      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} boardId={currentIdBoard}/>;
+      break;
+  }
+
   return (
     <>
-      <Header />
-      <Board title="My Boards" currentUser={1} dataBoards={dataBoard[0].boards}></Board>
- {/*      <Board title="Others Boards"></Board> */}
+      <Header setGoMain = {()=>setGo("mainBoards")} isVisibleHouse = {isDisplayNoneClass} />
+      { currentSection }
     </>
   );
 }

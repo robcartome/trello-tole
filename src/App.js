@@ -12,7 +12,7 @@ function App() {
       currentSection = <Home goto = {setRoute} />;
       break;
     case "main":
-      currentSection = <Main setRoute = {setRoute} />;
+      currentSection = <Main goto = {setRoute} />;
       break;
   }
   return (
