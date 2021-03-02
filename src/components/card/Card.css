@@ -1,0 +1,89 @@
+.card {
+  background: var(--background-card);
+  color: var(--font-color-card);
+  font-size: 14px;
+  padding: 6.8px 10px;
+  border-radius: 5px;
+  text-align: left;
+  width: 148px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.75);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-modal__content {
+  background: var(--background-modal-card);
+  width: 50%;
+  width: 343px;
+  padding: 12px 10px;
+  border-radius: 5px;
+}
+
+.card-modal__content textarea {
+  background: var(--color-light-gray);
+  border-radius: 5px;
+  border: 1px solid  var(--color-light-gray);
+  padding: 9px 10px;
+  width: 100%;
+}
+
+.card-modal__content h4{
+  text-align: left;
+  margin: 12px 0;
+}
+
+.card-modal__head {
+  text-align: left;
+}
+
+.card-modal__body {
+  text-align: left;
+  display:flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.card-modal__body input {
+  background: var(--color-light-gray);
+  border-radius: 5px;
+  border: 1px solid  var(--color-light-gray);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 10px;
+}
+
+
+.add-modal-area textarea {
+ height: 88px;
+}
+
+.card-modal__footer ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.card-modal__footer ul li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-modal__footer textarea{
+  height: 69px;
+  margin-top: 20px;
+}
