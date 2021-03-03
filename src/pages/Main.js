@@ -158,12 +158,35 @@ function Main({ goto }) {
   ]
 
   const [dataBoard, setDataBoard] = useState([initialState]);
+
+  const stateLists = JSON.parse(localStorage.getItem("dataList")) || [];
+  const [dataLists, setDataLists]= useState(listsData)
+
+  //const [dataLists, setDataLists]= useState(listsData)
   /* console.log("entro a main", dataBoard[0].boards); */
   const [go, setGo] = useState("mainBoards");
   const [currentIdBoard,setBoardId] = useState("");
   const [currentNameBoard,setBoardName] = useState("");
   let currentSection = null;
   let isDisplayNoneClass = "";
+
+  useEffect(async () => {
+    localStorage.setItem("dataList", JSON.stringify(dataLists));
+  }, [dataLists]);
+
+  function addList(name, idNewList, idBoard){
+    console.log(idBoard, idNewList, name);
+    const obj = {
+      "listId": idNewList,
+      "boardId": idBoard,
+      "name": name,
+      "cards": [],
+    }
+    listsData.push(obj);
+    setDataLists(listsData);
+    /* console.log(copialist); */
+  }
+
   switch (go) {
     case "mainBoards":
       isDisplayNoneClass = "notVisible";
@@ -175,8 +198,8 @@ function Main({ goto }) {
       setBoardName = {setBoardName} />;
       break;
     case "board":
-      const listData = listsData.filter(list => list.boardId === currentIdBoard );
-      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} listData = {listData} nameBoard = {currentNameBoard}/>;
+      const listData = dataLists.filter(list => list.boardId === currentIdBoard );
+      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} listData = {listData} nameBoard = {currentNameBoard} addList={addList} idBoard={currentIdBoard}/>;
       break;
   }
 

@@ -6,7 +6,7 @@ import { useState } from "react";
 import ShowCard from "../card/ShowCard";
 import AddForm from '../UI/forms/AddForm';
 
-function ShowBoard({setGo, listData, nameBoard}){
+function ShowBoard({setGo, listData, nameBoard, addList, idBoard}){
   const [ currentCard, setCurrentCard ] = useState(null);
   const [ showAddFormList, setShowAddList ] = useState(false);
   /* console.log("ss-", currentCard) */
@@ -18,7 +18,7 @@ function ShowBoard({setGo, listData, nameBoard}){
   return ( 
     <section className="lists-container">
       {showAddFormList && (
-        <AddForm titleButton={"Create List"} onCancel={() => setShowAddList(false)} />
+        <AddForm titleButton={"Create List"} onCancel={() => setShowAddList(false)} onSubmit={addList} listData= {listData} idBoard={idBoard}/>
       )}
       <h3 className="boards__title">{nameBoard}</h3>
       <ul className="lists-container__head">

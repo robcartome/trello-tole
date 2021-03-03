@@ -37,7 +37,7 @@
   box-sizing: border-box;
   padding: 14px 16px;
   font-size: 18px;
-  color: #EDEDED;
+  color:var(--font-color-card);
 }
 
 .add-form__footer {
