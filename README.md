@@ -1,5 +1,4 @@
-# Pagina Subida
-Deployed
+# Deployed
 https://trello-tolentino.vercel.app/
 
 # Getting Started with Create React App
