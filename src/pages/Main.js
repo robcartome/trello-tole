@@ -1,7 +1,9 @@
-import Header from "../components/main/Header";
-import BoardContainer from "../components/main/BoardContainer";
 import { useEffect, useState } from "react";
+
+import BoardContainer from "../components/main/BoardContainer";
+import Header from "../components/main/Header";
 import ShowBoard from "../components/board/ShowBoard";
+import { ListSeeder } from "../seederDataBase";
 
 function Main({ goto }) {
   const initialState = {
@@ -39,167 +41,57 @@ function Main({ goto }) {
       }],
   };
 
-  const listsData = [
-    {
-      "listId": 1,
-      "boardId": 1,
-      "name": "Todo",
-      "cards": [
-        {
-          "cardId": 2,
-          "listId":1,
-          "name": "Add Social",
-          "comments":[
-            {
-              "commentId": 1,
-              "userId": 1,
-              "description": "Where Comment"
-            },
-            {
-              "commentId": 2,
-              "userId": 2,
-              "description": "Where Comment"
-            }
-          ]
-        }
-      ],
-    },
-    {
-      "listId": 2,
-      "boardId": 1,
-      "name": "In Progress",
-      "cards": [
-        {
-          "cardId": 4,
-          "listId":2,
-          "name": "Add Social Progress",
-          "comments":[
-            {
-              "commentId": 5,
-              "userId": 1,
-              "description": "Where Comment"
-            },
-            {
-              "commentId": 6,
-              "userId": 2,
-              "description": "Where Comment"
-            }
-          ]
-        },
-        {
-          "cardId": 5,
-          "listId": 2,
-          "name": "Add Social Progress 2",
-          "comments":[
-            {
-              "commentId": 7,
-              "userId": 1,
-              "description": "My Comment "
-            },
-          ]
-        }
-      ],
-    },
-    {
-      "listId": 3,
-      "boardId": 1,
-      "name": "In Progress",
-      "cards": [
-        {
-          "cardId": 6,
-          "listId":3,
-          "name": "Add Social Progress",
-          "comments":[
-            {
-              "commentId": 5,
-              "userId": 1,
-              "description": "Where Comment"
-            },
-            {
-              "commentId": 6,
-              "userId": 2,
-              "description": "Where Comment"
-            }
-          ]
-        },
-        {
-          "cardId": 7,
-          "listId": 3,
-          "name": "Add Social Progress 2",
-          "comments":[
-            {
-              "commentId": 7,
-              "userId": 1,
-              "description": "My Comment "
-            },
-          ]
-        }
-      ],
-    },
-    {
-      "listId": 2,
-      "boardId": 2,
-      "name": "Todo",
-      "cards": [
-        {
-          "cardId": 3,
-          "listId":2,
-          "name": "Add Social",
-          "comments":[
-            {
-              "commentId": 4,
-              "userId": 2,
-              "description": "Where Comment"
-            }
-          ]
-        }
-      ],
-    }
-  ]
-
   const [dataBoard, setDataBoard] = useState([initialState]);
+  const [lists, setlists]= useState([])
 
-  const stateLists = JSON.parse(localStorage.getItem("dataList")) || [];
-  const [dataLists, setDataLists]= useState(listsData)
-
-  //const [dataLists, setDataLists]= useState(listsData)
-  /* console.log("entro a main", dataBoard[0].boards); */
   const [go, setGo] = useState("mainBoards");
   const [currentIdBoard,setBoardId] = useState("");
   const [currentNameBoard,setBoardName] = useState("");
   let currentSection = null;
   let isDisplayNoneClass = "";
 
-  useEffect(async () => {
-    localStorage.setItem("dataList", JSON.stringify(dataLists));
-  }, [dataLists]);
+  useEffect(() => {
+    // setDataBoard(stateLists);
+    setlists(ListSeeder);
+  }, []);
 
-  function addList(name, idNewList, idBoard){
-    console.log(idBoard, idNewList, name);
-    const obj = {
-      "listId": idNewList,
+  const getNextListId = (lists) => {
+    // Encontrar el valor máximo de la lista de id's y sumarle 1
+    const listId = lists?.map(list => list.listId);
+    return Math.max(...listId) + 1;
+  }
+
+  const addList = (name, idBoard) => {
+    const newList = {
+      "listId": getNextListId(lists),
       "boardId": idBoard,
       "name": name,
       "cards": [],
     }
-    listsData.push(obj);
-    setDataLists(listsData);
-    /* console.log(copialist); */
+    setlists([...lists, newList]);
   }
 
   switch (go) {
     case "mainBoards":
       isDisplayNoneClass = "notVisible";
-      currentSection = <BoardContainer 
-      currentUser={1} 
-      dataBoards={dataBoard[0].boards} 
-      setGo = {setGo} 
+      currentSection = <BoardContainer
+      currentUser={1}
+      dataBoards={dataBoard[0].boards}
+      setGo = {setGo}
       setBoardId = {setBoardId}
       setBoardName = {setBoardName} />;
       break;
     case "board":
-      const listData = dataLists.filter(list => list.boardId === currentIdBoard );
-      currentSection = <ShowBoard setGo = {()=>setGo("mainBoards")} listData = {listData} nameBoard = {currentNameBoard} addList={addList} idBoard={currentIdBoard}/>;
+      const listByBoard = lists.filter(list => list.boardId === currentIdBoard );
+      currentSection = <ShowBoard
+                          setGo = {()=>setGo("mainBoards")}
+                          nameBoard = {currentNameBoard}
+                          addList={addList}
+                          idBoard={currentIdBoard}
+                          listData={listByBoard}
+                        />;
+      break;
+    default:
       break;
   }
 

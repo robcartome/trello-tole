@@ -15,10 +15,10 @@ function ShowBoard({setGo, listData, nameBoard, addList, idBoard}){
     );
   }
 
-  return ( 
+  return (
     <section className="lists-container">
       {showAddFormList && (
-        <AddForm titleButton={"Create List"} onCancel={() => setShowAddList(false)} onSubmit={addList} listData= {listData} idBoard={idBoard}/>
+        <AddForm titleButton={"Create List"} onCancel={() => setShowAddList(false)} addList={addList} idBoard={idBoard}/>
       )}
       <h3 className="boards__title">{nameBoard}</h3>
       <ul className="lists-container__head">
@@ -35,12 +35,11 @@ function ShowBoard({setGo, listData, nameBoard, addList, idBoard}){
         <li className="button-add" onClick={()=>setShowAddList(true)}><AddLine color="#fff" /></li>
         {
           listData.map(list => <List key={list.listId} dataList={list} setCurrentCard = {setCurrentCard}/>)
-        }  
+        }
       </ul>
 
-           
       { showModalCard() }
-      
+
     </section>
   )
 }

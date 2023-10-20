@@ -12,7 +12,6 @@ function Home({ goto }) {
           Trello Innova
         </h1>
         <Button title="Start Here" onPress={ () => goto("main") } />
-        
       </div>
     </main>
   );
