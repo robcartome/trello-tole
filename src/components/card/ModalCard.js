@@ -1,5 +1,4 @@
 import { useState } from "react";
-import user1 from "../../assets/images/userw.png";
 import CloseLine from 'remixicon-react/CloseLineIcon';
 
 function ModalCard({card, onClose, updateCard}){
@@ -41,7 +40,7 @@ function ModalCard({card, onClose, updateCard}){
               card.comments.map((comment) => (
                 <li>
                   <span className="user-photo user-photo--color">
-                  <img src={user1} alt="user" />
+                  <img src={`https://i.pravatar.cc/150?u=${comment.userId}`} alt="user" />
                   </span>
                   {comment.description}
                 </li>
