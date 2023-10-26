@@ -1,12 +1,7 @@
 import "./Card.css";
 
-function Card({ showCurrentCard, name}){
-
-  return (
-    <>
-    <li className="card" onClick={()=> showCurrentCard()} >{name}</li>
-    </>
-  )
+function Card({ onClick, name}){
+  return <li className="card" onClick={onClick} >{name}</li>
 }
 
 export default Card;

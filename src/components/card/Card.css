@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.card-modal{
+.card-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -28,7 +28,7 @@
   background: var(--background-modal-card);
   width: 50%;
   width: 343px;
-  padding: 12px 10px;
+  padding: 1rem;
   border-radius: 5px;
 }
 
@@ -66,8 +66,13 @@
 }
 
 
-.add-modal-area textarea {
+.card-modal__description-container textarea {
  height: 88px;
+}
+
+.card-modal__description-text {
+  text-align: justify;
+  padding: auto;
 }
 
 .card-modal__footer ul{
