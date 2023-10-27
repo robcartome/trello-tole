@@ -92,3 +92,23 @@
   height: 69px;
   margin-top: 20px;
 }
+
+.wrapper-button-comment {
+  display: flex;
+  justify-content: left;
+  margin-top: 8px;
+}
+
+.button-comment {
+  background-color:#0c66e4;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #FFF;
+  font-weight: 500;
+}
+
+.button-comment:hover {
+  opacity: 0.7;
+}

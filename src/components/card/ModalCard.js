@@ -1,11 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CloseLine from 'remixicon-react/CloseLineIcon';
 
-function ModalCard({card, onClose, updateCard}){
-  const [cardTitle, setCardTitle] = useState(card.name)
-  const [cardDescription, setCardDescription] = useState(card.description)
-  const handleBlur = () => {
-    updateCard({ name: cardTitle, description: cardDescription })
+function ModalCard({ card, onClose, updateCard }){
+  const [cardTitle, setCardTitle] = useState('')
+  const [cardDescription, setCardDescription] = useState('')
+  const [cardComments, setCardComments] = useState([])
+  const [comment, setComment] = useState('')
+
+  useEffect(() => {
+    setCardTitle(card.name)
+    setCardDescription(card.description)
+    setCardComments(card.comments)
+  }, [card])
+
+  const handleBlur = (event) => {
+    const { name, value } = event.target
+    updateCard({ [name]: value})
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    updateCard({ comment }) // comment: comment
+    setComment('')
   }
   return (
     <div className = "card-modal">
@@ -16,6 +31,7 @@ function ModalCard({card, onClose, updateCard}){
         <div className="card-modal__body">
           <input
             type="text"
+            name="name"
             placeholder = "Type title here..."
             defaultValue={cardTitle}
             onChange={(event) => setCardTitle(event.target.value)}
@@ -37,7 +53,7 @@ function ModalCard({card, onClose, updateCard}){
           <h4>Comments:</h4>
           <ul>
             {
-              card.comments.map((comment) => (
+              cardComments.map((comment) => (
                 <li>
                   <span className="user-photo user-photo--color">
                   <img src={`https://i.pravatar.cc/150?u=${comment.userId}`} alt="user" />
@@ -47,7 +63,19 @@ function ModalCard({card, onClose, updateCard}){
               ))
             }
           </ul>
-          <textarea name="comments" placeholder="Type Comment here..." />
+          <form onSubmit={handleSubmit}>
+            <textarea
+              name="comment"
+              placeholder="Type Comment here..."
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+            />
+            <div className="wrapper-button-comment">
+              <button type="submit" className="button-comment">
+                Add Comment
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

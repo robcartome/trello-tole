@@ -12,22 +12,37 @@ function List({dataList}){
 
   useEffect(() => {
     setCards(CardsSeeder);
-  }, [])
+  }, []);
 
   const onClickSelectCard = (card) => {
     setSelectCard(card);
     setShowModalCard(true);
-  }
-  const closeModalCard = () => {setShowModalCard(false)}
-  const updateCard = ({ name, description }) => {
-    const updateCards = cards.map((card) => {
+  };
+  const closeModalCard = () => {setShowModalCard(false)};
+  const updateCard = ({ name, description, comment }) => {
+    const updatedCards = cards.map((card) => {
+      const updatedCard = {...card} // Copia superficial de la tarjeta
       if (card.cardId === selectCard.cardId) {
-        return {...card, "name" : name, "description" : description }
+        if (comment) {
+          const newComment = {
+            commentId: getNextCommentId(cards),
+            userId: 1,
+            description: comment,
+          }
+          updatedCard.comments = [...updatedCard.comments, newComment]
+        };
+        const newUpdateCard = {
+          ...updatedCard,
+          name,
+          description,
+        }
+        setSelectCard(newUpdateCard)
+        return newUpdateCard
       }
-      return card
+      return card;
     });
-    setCards(updateCards);
-  }
+    setCards(updatedCards);
+  };
   const filterCards = cards.filter(card => dataList.cardIds.includes(card.cardId));
 
   return (
@@ -38,7 +53,6 @@ function List({dataList}){
         </div>
         <ul className="list__body">
           {filterCards.map((card) => {
-            console.log("card", card);
             return (
               <Card
                 key={card.cardId}
@@ -62,6 +76,21 @@ function List({dataList}){
       )}
     </>
   );
+}
+
+const getNextCommentId = (cards) => {
+  let commentIds = [];
+  cards?.forEach(card => {
+    const commentIdsByCard = card.comments.map((comment) => comment.commentId)
+    commentIds.push(...commentIdsByCard) // Merging arrays
+  });
+
+  /* // Otro modo usando flat
+  const commentIds = CardsSeeder.map(card => card.comments.map(comment => comment.commentId));
+  // Flatten el array resultante
+  const flatCommentIds = commentIds.flat(); */
+
+  return Math.max(...commentIds) + 1;
 }
 
 export default List;
