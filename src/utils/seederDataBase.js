@@ -134,12 +134,12 @@ export const CardsSeeder = [
     "description": "",
     "comments":[
       {
-        "commentId": 5,
+        "commentId": 8,
         "userId": 1,
         "description": "My Comment user 1"
       },
       {
-        "commentId": 6,
+        "commentId": 9,
         "userId": 2,
         "description": "Other Comment"
       }

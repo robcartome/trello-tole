@@ -20,29 +20,39 @@ function List({dataList}){
   };
   const closeModalCard = () => {setShowModalCard(false)};
   const updateCard = ({ name, description, comment }) => {
+    if (
+      name === undefined &&
+      description === undefined &&
+      comment === undefined
+    )
+      return;
+
     const updatedCards = cards.map((card) => {
-      const updatedCard = {...card} // Copia superficial de la tarjeta
-      if (card.cardId === selectCard.cardId) {
-        if (comment) {
-          const newComment = {
-            commentId: getNextCommentId(cards),
-            userId: 1,
-            description: comment,
-          }
-          updatedCard.comments = [...updatedCard.comments, newComment]
-        };
-        const newUpdateCard = {
-          ...updatedCard,
-          name,
-          description,
-        }
-        setSelectCard(newUpdateCard)
-        return newUpdateCard
+      if (card.cardId !== selectCard.cardId) {
+        return card;
       }
-      return card;
+
+      const updatedCard = { ...card }; // Copia superficial de la tarjeta
+      if (comment) {
+        const newComment = {
+          commentId: getNextCommentId(cards),
+          userId: 1,
+          description: comment,
+        };
+        updatedCard.comments = [...updatedCard.comments, newComment];
+      }
+      const newUpdateCard = {
+        ...updatedCard,
+        name: name ? name : updatedCard.name,
+        description: description !== undefined ? description : updatedCard.description,
+      };
+
+      setSelectCard(newUpdateCard);
+      return newUpdateCard;
     });
     setCards(updatedCards);
   };
+
   const filterCards = cards.filter(card => dataList.cardIds.includes(card.cardId));
 
   return (
